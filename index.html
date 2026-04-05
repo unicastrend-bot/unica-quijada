@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unica Quijada – Virtual Assistant Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    /*
+      Root variables for colors and fonts. These values define the soft,
+      elegant palette used throughout the site. Adjust them here to tweak
+      the overall look and feel.
+    */
+    :root {
+      --color-primary: #9cb199; /* sage green */
+      --color-secondary: #a2bba1; /* olive green */
+      --color-accent: #e8e3d8; /* beige/cream */
+      --color-light: #faf8f3; /* warm off‑white */
+      --color-muted: #f5f3ec; /* muted cream background */
+      --color-text: #414d3e; /* dark text */
+      --color-subtle: #747d69; /* subtle text */
+      --color-gold: #d4b87b; /* soft gold accent */
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Open Sans', sans-serif;
+      --font-script: 'Great Vibes', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      line-height: 1.6;
+      color: var(--color-text);
+      background-color: var(--color-muted);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Container utility */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: var(--color-light);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--color-secondary);
+    }
+    .nav-cta {
+      margin-left: auto;
+      margin-right: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      border-radius: 999px;
+      background-color: var(--color-primary);
+      color: #fff;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn:hover {
+      background-color: var(--color-secondary);
+      transform: translateY(-2px);
+    }
+    .utilities {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .utility {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background-color: var(--color-accent);
+      color: var(--color-text);
+      border: 1px solid var(--color-primary);
+      transition: background-color 0.3s ease;
+    }
+    .utility:hover {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--color-light);
+      padding: 4rem 0;
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-left,
+    .hero-center,
+    .hero-right {
+      flex: 1 1 300px;
+    }
+    .profile-container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      background-color: var(--color-accent);
+      border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .profile-image {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      background-color: var(--color-muted);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--color-subtle);
+      text-align: center;
+    }
+    .profile-image::before {
+      content: "Profile Image";
+    }
+    /* Optional decorative element */
+    .profile-container::after {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 60%;
+      bottom: -15%;
+      right: -15%;
+      background: radial-gradient(circle at center, var(--color-secondary) 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0.3;
+    }
+    .hero-center .intro-small {
+      font-size: 0.9rem;
+      color: var(--color-secondary);
+      letter-spacing: 2px;
+    }
+    .hero-center .hero-name {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin: 0.5rem 0;
+    }
+    .alias {
+      font-family: var(--font-script);
+      font-size: 1.8rem;
+      color: var(--color-gold);
+      margin: 0.5rem 0;
+    }
+    .profession,
+    .intro-description,
+    .intro-note {
+      margin-bottom: 0.8rem;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .badge {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .badge:hover {
+      background-color: var(--color-secondary);
+      transform: translateY(-2px);
+    }
+    .hero-right .contact-card {
+      background-color: var(--color-accent);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    .contact-card ul {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+    .contact-card li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .contact-card li .icon {
+      margin-right: 0.5rem;
+      font-size: 1rem;
+    }
+    .contact-card .quote {
+      font-family: var(--font-script);
+      color: var(--color-gold);
+      font-size: 1.2rem;
+      text-align: left;
+      margin-top: 0.8rem;
+    }
+
+    /* Info Section: About, Services, Skills */
+    .info-section {
+      padding: 4rem 0;
+      background-color: var(--color-muted);
+    }
+    .card-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .info-card {
+      background-color: var(--color-light);
+      flex: 1 1 300px;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .info-card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--color-primary);
+    }
+    .card-image {
+      width: 100%;
+      padding-top: 56%;
+      background-color: var(--color-accent);
+      border-radius: 0.75rem;
+      position: relative;
+    }
+    .card-image::before {
+      content: "Image";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--color-subtle);
+      font-size: 1rem;
+    }
+
+    /* Services card specifics */
+    .services-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .service-category {
+      flex: 1 1 200px;
+    }
+    .service-category h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .service-category ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .service-category li {
+      margin-bottom: 0.3rem;
+      padding-left: 1rem;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    .service-category li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+    }
+
+    /* Skills & Tools card specifics */
+    .skills-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .skills,
+    .tools {
+      flex: 1 1 200px;
+    }
+    .skills h3,
+    .tools h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .pill {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+    .tool-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tool {
+      background-color: var(--color-accent);
+      color: var(--color-text);
+      padding: 0.3rem 0.7rem;
+      border-radius: 0.5rem;
+      font-size: 0.8rem;
+      border: 1px solid var(--color-primary);
+    }
+
+    /* Featured Services / Expertise */
+    .features-section {
+      background-color: var(--color-light);
+      padding: 4rem 0;
+    }
+    .features-section h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .features-section p.subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      color: var(--color-subtle);
+      font-size: 0.95rem;
+    }
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .feature-card {
+      flex: 1 1 250px;
+      background-color: var(--color-accent);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+    .feature-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      color: var(--color-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .feature-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .feature-card li {
+      margin-bottom: 0.4rem;
+      padding-left: 1rem;
+      position: relative;
+      font-size: 0.9rem;
+    }
+    .feature-card li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+    }
+
+    /* Projects / Sample Work */
+    .projects-section {
+      background-color: var(--color-muted);
+      padding: 4rem 0;
+    }
+    .projects-section h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .projects-section p.subtitle {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 2rem auto;
+      color: var(--color-subtle);
+      font-size: 0.95rem;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background-color: var(--color-light);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    }
+    .project-card .project-img {
+      background-color: var(--color-accent);
+      padding-top: 60%;
+      position: relative;
+    }
+    .project-card .project-img::before {
+      content: "Image";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--color-subtle);
+      font-size: 0.9rem;
+    }
+    .project-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      margin: 1rem 1rem 0.3rem 1rem;
+    }
+    .project-card p.category {
+      margin: 0 1rem;
+      font-size: 0.85rem;
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+    .project-card .note {
+      margin: 0.5rem 1rem 1rem 1rem;
+      font-size: 0.75rem;
+      color: var(--color-subtle);
+      font-style: italic;
+    }
+
+    /* Project preview overlay */
+    .project-preview {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      z-index: 2000;
+    }
+    .project-preview:target {
+      display: flex;
+    }
+    .preview-content {
+      background-color: var(--color-light);
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+      max-height: 90vh;
+      position: relative;
+    }
+    .preview-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .preview-content p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .preview-content a.close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      color: var(--color-secondary);
+    }
+    .preview-content a.close:hover {
+      color: var(--color-primary);
+    }
+
+    /* Bottom Information Row */
+    .info-row {
+      background-color: var(--color-light);
+      padding: 4rem 0;
+    }
+    .info-row .row-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .info-row .row-card {
+      flex: 1 1 300px;
+      background-color: var(--color-accent);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .info-row .row-card:hover {
+      transform: translateY(-4px);
+    }
+    .row-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .row-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+    .testimonials .testimonial {
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      position: relative;
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+    .testimonials .testimonial::before {
+      content: "\2014 \00A0";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--color-primary);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background-color: var(--color-primary);
+      color: #fff;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .cta-buttons .btn {
+      background-color: #fff;
+      color: var(--color-primary);
+      border: 2px solid #fff;
+    }
+    .cta-buttons .btn:hover {
+      background-color: transparent;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-secondary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    footer p.message {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-family: var(--font-script);
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    footer .footer-links a {
+      color: #fff;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.3s ease;
+    }
+    footer .footer-links a:hover {
+      border-color: #fff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 1rem;
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+      .nav-cta {
+        width: 100%;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      .utilities {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+      .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Unica</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <!-- link to the sample work grid for the portfolio -->
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="btn" href="#contact">Let’s Work Together</a>
+      </div>
+      <div class="utilities">
+        <a class="utility" href="#home">Home</a>
+        <a class="utility" href="javascript:history.back()">Back</a>
+        <a class="utility" href="#home">Exit</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <div class="hero-left">
+        <div class="profile-container">
+          <div class="profile-image"></div>
+        </div>
+      </div>
+      <div class="hero-center">
+        <p class="intro-small">Hello, I’m</p>
+        <h1 class="hero-name">Unica Quijada</h1>
+        <p class="alias">aka Unica</p>
+        <p class="profession">an aspiring Virtual Assistant specializing in planning, organization, and graphic design.</p>
+        <p class="intro-description">I help individuals, entrepreneurs, and growing businesses stay organized, visually consistent, and well-supported through reliable virtual assistance and creative services.</p>
+        <p class="intro-note">Thank you for your interest in my services. I am committed to providing organized, detail-oriented, and creative support that helps your work run smoothly.</p>
+        <div class="badges">
+          <span class="badge">Organized</span>
+          <span class="badge">Creative</span>
+          <span class="badge">Reliable</span>
+          <span class="badge">Detail‑Oriented</span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="contact-card">
+          <ul>
+            <li><span class="icon">📍</span> Dumaguete City</li>
+            <li><span class="icon">✉️</span> unicastrend@gmail.com</li>
+            <li><span class="icon">📘</span> Facebook: Unica</li>
+          </ul>
+          <p class="quote">Let’s grow, create, and thrive together!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Services / Skills Section -->
+  <section id="about" class="info-section">
+    <div class="container">
+      <div class="card-group">
+        <!-- About Me Card -->
+        <div class="info-card">
+          <h2>About Me</h2>
+          <div class="card-image"></div>
+          <p>
+            I’m a Virtual Assistant, Fitness &amp; Wellness Planner, and Creative &amp; Educational Support specialist with a strong background in Physical Education. I help clients stay organized, improve workflow, support health goals, and enhance content through planning, wellness programs, and creative design. I hold a Bachelor of Physical Education and create fitness plans, educational materials, planners, and digital content for different age groups.
+          </p>
+        </div>
+        <!-- Services Card -->
+        <div class="info-card" id="services">
+          <h2>Services</h2>
+          <div class="services-columns">
+            <div class="service-category">
+              <h3>Virtual Assistant</h3>
+              <ul>
+                <li>Calendar Management</li>
+                <li>Email Management</li>
+                <li>Data Entry</li>
+                <li>Task &amp; Planning</li>
+              </ul>
+            </div>
+            <div class="service-category">
+              <h3>Fitness &amp; Wellness</h3>
+              <ul>
+                <li>Personalized Plans</li>
+                <li>Workout Plans</li>
+                <li>Wellness Planning</li>
+                <li>Habit Tracking</li>
+                <li>Fitness Guidance</li>
+              </ul>
+            </div>
+            <div class="service-category">
+              <h3>Teaching (PE)</h3>
+              <ul>
+                <li>Online &amp; Physical PE Teaching</li>
+                <li>Lesson Planning</li>
+                <li>Activity‑Based Learning</li>
+              </ul>
+            </div>
+            <div class="service-category">
+              <h3>Creative &amp; Educational</h3>
+              <ul>
+                <li>Graphic Design (Canva)</li>
+                <li>Book &amp; Cover Design</li>
+                <li>Activity Books</li>
+                <li>Educational Materials</li>
+                <li>Custom Materials</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Skills & Tools Card -->
+        <div class="info-card">
+          <h2>Skills &amp; Tools</h2>
+          <div class="skills-tools">
+            <div class="skills">
+              <h3>Skills</h3>
+              <div class="pill-group">
+                <span class="pill">Organization</span>
+                <span class="pill">Communication</span>
+                <span class="pill">Time Management</span>
+                <span class="pill">Creativity</span>
+                <span class="pill">Planning</span>
+                <span class="pill">Adaptability</span>
+                <span class="pill">Problem Solving</span>
+              </div>
+            </div>
+            <div class="tools">
+              <h3>Tools</h3>
+              <div class="tool-icons">
+                <span class="tool">Canva</span>
+                <span class="tool">Google Workspace</span>
+                <span class="tool">Microsoft Office</span>
+                <span class="tool">CapCut</span>
+                <span class="tool">ChatGPT</span>
+                <span class="tool">Gmail</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services / Expertise Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <h2>Featured Services / Expertise</h2>
+      <p class="subtitle">Here are the key areas where I can support your business and creative needs.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Fitness &amp; Wellness</h3>
+          <ul>
+            <li>Personalized Plans</li>
+            <li>Workout Plans</li>
+            <li>Wellness Planning</li>
+            <li>Habit Tracking</li>
+            <li>Fitness Guidance</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>Planning &amp; Organization</h3>
+          <ul>
+            <li>Daily Planner</li>
+            <li>Weekly Planner</li>
+            <li>Monthly Planner</li>
+            <li>Yearly Planner</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>Design &amp; Content</h3>
+          <ul>
+            <li>Canva Graphics</li>
+            <li>Book Covers</li>
+            <li>Recipe Books</li>
+            <li>Coloring / Activity Books</li>
+            <li>Educational Materials</li>
+            <li>Branding Kits</li>
+          </ul>
+        </div>
+        <div class="feature-card">
+          <h3>Branding &amp; Portfolio</h3>
+          <ul>
+            <li>Portfolio Showcase Design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects / Sample Work Section -->
+  <section id="portfolio" class="projects-section">
+    <div class="container">
+      <h2>Featured Projects / Sample Work</h2>
+      <p class="subtitle">A selection of sample projects that reflect my skills, creativity, and attention to detail.</p>
+      <div class="project-grid">
+        <a href="#project1" class="project-card">
+          <div class="project-img"></div>
+          <h3>7‑Day Fitness Plan</h3>
+          <p class="category">Fitness &amp; Wellness</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project2" class="project-card">
+          <div class="project-img"></div>
+          <h3>Weekly Content Planner</h3>
+          <p class="category">Planning &amp; Organization</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project3" class="project-card">
+          <div class="project-img"></div>
+          <h3>Social Media Graphics</h3>
+          <p class="category">Design &amp; Content</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project4" class="project-card">
+          <div class="project-img"></div>
+          <h3>Wellness Tracker Template</h3>
+          <p class="category">Planning &amp; Organization</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project5" class="project-card">
+          <div class="project-img"></div>
+          <h3>Kids Activity Book</h3>
+          <p class="category">Creative &amp; Educational</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project6" class="project-card">
+          <div class="project-img"></div>
+          <h3>Portfolio Cover Design</h3>
+          <p class="category">Branding &amp; Portfolio</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+        <a href="#project7" class="project-card">
+          <div class="project-img"></div>
+          <h3>PE Lesson Plan</h3>
+          <p class="category">Teaching Material</p>
+          <p class="note">Click to view sample work</p>
+        </a>
+      </div>
+      <p class="subtitle" style="margin-top:2rem; font-style: italic; color: var(--color-subtle);">
+        All projects are sample works created to showcase my skills and creativity.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bottom Information Row -->
+  <section id="testimonials" class="info-row">
+    <div class="container row-grid">
+      <!-- Education Card -->
+      <div class="row-card">
+        <h3>Education</h3>
+        <p>Bachelor of Physical Education</p>
+        <p>Foundation University – Dumaguete City</p>
+        <p>2026</p>
+      </div>
+      <!-- Testimonials Card -->
+      <div class="row-card testimonials">
+        <h3>Testimonials</h3>
+        <div class="testimonial">“Unica’s organizational skills have streamlined my business operations. Her professionalism and creativity are unparalleled.” – Business Owner</div>
+        <div class="testimonial">“Working with Unica on my fitness journey has been transformative. Her guidance and personalized plans kept me motivated and on track!” – Fitness Client</div>
+        <div class="testimonial">“As a teacher, I appreciate how Unica’s activities keep my students engaged and active. Her materials are both fun and educational.” – Parent</div>
+      </div>
+      <!-- Why Work With Me Card -->
+      <div class="row-card">
+        <h3>Why Work With Me?</h3>
+        <p>
+          I’m detail‑oriented, reliable, organized, creative, and passionate about helping clients. I combine planning, support, design, and teaching skills to deliver quality work with care and professionalism. Let me help you stay organized, visually consistent, and inspired.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Call To Action Section -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2>Let’s Work Together</h2>
+      <p>Ready to get started? I’d love to collaborate with you and support your projects with my virtual assistance and creative services.</p>
+      <div class="cta-buttons">
+        <a class="btn" href="mailto:unicastrend@gmail.com">Email Me</a>
+        <a class="btn" href="#portfolio">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="message">Let’s work together! I’d love to support you in staying organized, creative, and healthy.</p>
+    <div class="footer-links">
+      <a href="mailto:unicastrend@gmail.com">Email</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://m.me" target="_blank">Messenger</a>
+    </div>
+  </footer>
+
+  <!-- Project Previews (hidden sections revealed when targeted) -->
+  <!-- Preview 1 -->
+  <div id="project1" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>7‑Day Fitness Plan</h3>
+      <p>This sample includes a week‑long fitness plan tailored to help clients stay active and healthy. It outlines daily workouts, wellness tips, and motivational notes to encourage consistent progress.</p>
+      <p>Use this layout as inspiration for personalized plans that fit your lifestyle and goals.</p>
+    </div>
+  </div>
+  <!-- Preview 2 -->
+  <div id="project2" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>Weekly Content Planner</h3>
+      <p>This planner helps organize your weekly content schedule, ensuring your messaging stays consistent and on brand. It includes sections for brainstorming, scheduling posts, and tracking engagement.</p>
+      <p>It’s perfect for entrepreneurs and creators seeking an efficient way to manage their online presence.</p>
+    </div>
+  </div>
+  <!-- Preview 3 -->
+  <div id="project3" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>Social Media Graphics</h3>
+      <p>A collection of eye‑catching social media graphics created using Canva. Each design aligns with brand aesthetics and engages audiences through thoughtful composition and color.</p>
+      <p>These templates can be customized to suit your unique style and messaging.</p>
+    </div>
+  </div>
+  <!-- Preview 4 -->
+  <div id="project4" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>Wellness Tracker Template</h3>
+      <p>This template allows you to monitor your wellness journey. Track daily habits, hydration, sleep, and mood, all in one beautifully designed sheet. Staying mindful of your wellbeing has never been easier.</p>
+    </div>
+  </div>
+  <!-- Preview 5 -->
+  <div id="project5" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>Kids Activity Book</h3>
+      <p>An engaging and educational activity book designed for children. It features coloring pages, puzzles, and interactive exercises that promote learning and creativity.</p>
+      <p>This sample highlights my ability to create fun and informative materials for young audiences.</p>
+    </div>
+  </div>
+  <!-- Preview 6 -->
+  <div id="project6" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>Portfolio Cover Design</h3>
+      <p>A clean and modern cover design for portfolios or presentations. This design balances professional aesthetics with creative flair, ensuring your work stands out.</p>
+      <p>Use it as a starting point for designing your own portfolio showcase.</p>
+    </div>
+  </div>
+  <!-- Preview 7 -->
+  <div id="project7" class="project-preview">
+    <div class="preview-content">
+      <a href="#portfolio" class="close">×</a>
+      <h3>PE Lesson Plan</h3>
+      <p>A structured lesson plan tailored for physical education classes. It includes objectives, warm‑up activities, main tasks, and cool‑down exercises designed to engage students of different ages and abilities.</p>
+      <p>This sample demonstrates my ability to create comprehensive educational materials.</p>
+    </div>
+  </div>
+</body>
+</html>
